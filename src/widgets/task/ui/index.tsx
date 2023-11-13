@@ -2,7 +2,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { TaskModel } from "../../../entities/task/model";
 import { Link } from "react-router-dom";
-import { API_URL } from "../../../shared/config";
+// import { API_URL } from "../../../shared/config";
 // import Image from "../../../assets/image.jpg"
 
 export type CardProps = {
