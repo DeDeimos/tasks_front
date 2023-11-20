@@ -24,20 +24,20 @@ export const TaskPage: React.FC = () => {
       <Header />
       <Breadcrumb
         items={[
-          { text: "Задание", href: "/" },
+          { text: "Задание", href: "/tasks_front" },
           { text: task.name, active: true },
         ]}
       />
-      <div>
-        <div>
-          <p>{task.subject}</p>
+      <div style={{padding: "20px", display: "flex"}}>
+        <div style={{margin: "20px"}}>
           <div className="image">
-            <img src={task.image} />
+            <img style={{width: "370px"}} src={task.image} />
           </div>
         </div>
-        <div>
+        <div style={{display: "flex", flexDirection: "column"}}>
+          <h3>{task.subject}</h3>
           {task.description}
-          <Button>Добавить</Button>
+          <Button>Добавить в список занятий</Button>
         </div>
       </div>
     </>

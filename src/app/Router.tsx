@@ -8,12 +8,12 @@ export const router = createBrowserRouter([
     // element: <MainLayout />,   
     children: [
       {
-        path: '/',
+        path: '/tasks_front',
         element: <HomePage />,
         
       },
       {
-        path: '/task/:id',
+        path: '/tasks_front/task/:id',
         element: <TaskPage />
       },
     ],
