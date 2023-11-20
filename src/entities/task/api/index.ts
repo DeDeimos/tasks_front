@@ -5,8 +5,9 @@ export async function fetchTasks(
   title: string | null = null
 ): Promise<TaskModel[]> {
   let response;
-
+  
   if (title) {
+    title = title?.toLocaleLowerCase();
     response = await fetch(`${API_URL}/tasks?title=${title}`);
   } else {
     response = await fetch(`${API_URL}/tasks`);

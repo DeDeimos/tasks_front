@@ -17,7 +17,7 @@ export const Task: React.FC<CardProps> = ({ task }) => {
         <Card.Title>{task.name}</Card.Title>
         <Card.Title>{task.subject}</Card.Title>
         <Card.Text>{task.minidescription}</Card.Text>
-        <Link to={`/task/${task.id}`}>
+        <Link to={`/tasks_front/task/${task.id}`}>
           <Button variant="primary">Посмотреть</Button>
         </Link>
       </Card.Body>
