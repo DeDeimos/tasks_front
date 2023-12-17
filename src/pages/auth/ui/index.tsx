@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
-import {Link, useNavigate} from "react-router-dom"
-
+import { Link, useNavigate } from "react-router-dom";
+import {
+  useLoginMutation,
+  useRegisterMutation,
+} from "../../../entities/session/api";
 
 const Auth = () => {
   const [formData, setFormData] = useState({
@@ -11,23 +14,34 @@ const Auth = () => {
     password2: "",
   });
 
-
   const [isLogin, setIsLogin] = useState(true);
   const handleToggle = () => {
     setIsLogin((prev) => !prev);
   };
 
+  const [login] = useLoginMutation();
+  const [register] = useRegisterMutation();
   const history = useNavigate();
 
-  const [error, setError] = useState('');
-  
+  const [error, setError] = useState("");
+
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
-  }
+  };
+
+  const handleSubmit = () => {
+    isLogin
+      ? login({ email: formData.email, passwd: formData.password })
+      : register({
+          email: formData.email,
+          name: formData.name,
+          passwd: formData.password,
+        });
+  };
 
   return (
     <Row className="justify-content-center">
@@ -41,7 +55,7 @@ const Auth = () => {
                 type="text"
                 placeholder="Имя"
                 name="name"
-                onChange = {handleChange}
+                onChange={handleChange}
               />
             </Form.Group>
           )}
@@ -51,7 +65,7 @@ const Auth = () => {
               type="email"
               placeholder="email"
               name="email"
-              onChange = {handleChange}
+              onChange={handleChange}
             />
           </Form.Group>
 
@@ -61,7 +75,7 @@ const Auth = () => {
               type="password"
               placeholder="password"
               name="password"
-              onChange = {handleChange}
+              onChange={handleChange}
             />
           </Form.Group>
           {!isLogin && (
@@ -71,13 +85,13 @@ const Auth = () => {
                 type="password"
                 placeholder="введите пароль повторно"
                 name="password2"
-                onChange = {handleChange}
+                onChange={handleChange}
               />
             </Form.Group>
           )}
           <div className="mt-3 text-center">
             <p>
-              {isLogin ? "Нет аккаунта?" : "Уже есть аккаунт"} ? {" "}
+              {isLogin ? "Нет аккаунта?" : "Уже есть аккаунт"} ?{" "}
               <Button
                 size="sm"
                 variant="outline-primary"
@@ -86,7 +100,7 @@ const Auth = () => {
                 {isLogin ? "Зарегистрироваться" : "Войти"}
               </Button>
             </p>
-            <Button className="btn btn-block">
+            <Button className="btn btn-block" onClick={handleSubmit}>
               Sign {isLogin ? "Войти" : "Зарегистрироваться"}
             </Button>
           </div>
