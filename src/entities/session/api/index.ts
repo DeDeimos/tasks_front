@@ -23,7 +23,7 @@ export const sessionApi = axiosBaseApi.injectEndpoints({
     }),
     register: build.mutation<Session, RequestRegisterBody>({
       query: (body) => ({
-        url: `/auth/register`,
+        url: `/auth/registration`,
         method: "POST",
         data: body,
       }),

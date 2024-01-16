@@ -7,7 +7,7 @@ import { Header } from "../../../widgets/header";
 
 export const Reg = () => {
   const [register, { isLoading, data, error }] = useRegisterMutation();
-
+  const [errorData, setErrorData] = React.useState<string | null>(null);
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -16,7 +16,20 @@ export const Reg = () => {
     const passwd = formData.get("passwd") as string;
     const phone = formData.get("phone") as string;
 
-    register({ name, email, passwd });
+    if (passwd == formData.get("passwd2")) {
+      setErrorData("Пароли не совпадают");
+      return;
+    }
+    if (name == "") {
+      setErrorData("Введите имя");
+      return;
+    }
+    if (email == "") {
+      setErrorData("Введите почту");
+      return;
+    }
+    register({ name: name, email: email, pass: passwd, phone: phone });
+    setErrorData(null);
   };
 
   React.useEffect(() => {
@@ -81,6 +94,10 @@ export const Reg = () => {
             {error && "data" in error && capitalize(error.data as string)}
           </p>
 
+
+          <p className="text-danger">
+            {errorData}
+          </p>
           <Button variant="primary" type="submit">
             Зарегистрироваться
             {isLoading && "..."}

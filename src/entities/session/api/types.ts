@@ -16,5 +16,6 @@ export type RequestLoginBody = {
 export type RequestRegisterBody = {
   email: string;
   name: string;
-  passwd: string;
+  pass: string;
+  phone: string;
 };
