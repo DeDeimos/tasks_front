@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 // import { API_URL } from "../../../shared/config";
 // import Image from "../../../assets/image.jpg"
-import Photo from "../../../assets/image.png"
+import Photo from "../../../assets/photo.png"
 
 export type CardProps = {
   task: TaskModel;

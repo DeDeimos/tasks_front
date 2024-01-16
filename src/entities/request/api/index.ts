@@ -2,7 +2,7 @@ import { RequestModel, normalizeRequest } from "../model";
 import { API_URL } from "../../../shared/config";
 
 export async function fetchRequests(
-    title: string | null = null
+    // title: string | null = null
 ): Promise<RequestModel[]> {
     let response;
 

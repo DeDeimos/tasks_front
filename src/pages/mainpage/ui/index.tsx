@@ -25,7 +25,7 @@ export const HomePage: React.FC = () => {
         setTasks(tasks);
         console.log(tasks);
       })
-      .catch((error) => {
+      .catch(() => {
         setTasks([
           {
             id: "1",

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
-import {Link, useNavigate} from "react-router-dom"
 
 
 const Auth = () => {
@@ -17,10 +16,6 @@ const Auth = () => {
     setIsLogin((prev) => !prev);
   };
 
-  const history = useNavigate();
-
-  const [error, setError] = useState('');
-  
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -29,6 +24,8 @@ const Auth = () => {
     }));
   }
 
+  console.log(formData);
+
   return (
     <Row className="justify-content-center">
       <Col xs={10} md={4}>
@@ -36,17 +33,17 @@ const Auth = () => {
           <h1 className="m-3 text-center">Sign {isLogin ? "In" : "Up"}</h1>
           {!isLogin && (
             <Form.Group className="my-2">
-              <Form.Label>Имя</Form.Label>
+              <Form.Label>пїЅпїЅпїЅ</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Имя"
+                placeholder="пїЅпїЅпїЅ"
                 name="name"
                 onChange = {handleChange}
               />
             </Form.Group>
           )}
           <Form.Group className="my-2">
-            <Form.Label>Email адрес</Form.Label>
+            <Form.Label>Email пїЅпїЅпїЅпїЅпїЅ</Form.Label>
             <Form.Control
               type="email"
               placeholder="email"
@@ -56,7 +53,7 @@ const Auth = () => {
           </Form.Group>
 
           <Form.Group className="my-2">
-            <Form.Label>Пароль</Form.Label>
+            <Form.Label>пїЅпїЅпїЅпїЅпїЅпїЅ</Form.Label>
             <Form.Control
               type="password"
               placeholder="password"
@@ -66,10 +63,10 @@ const Auth = () => {
           </Form.Group>
           {!isLogin && (
             <Form.Group className="my-2">
-              <Form.Label>Подтвердите пароль</Form.Label>
+              <Form.Label>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="введите пароль повторно"
+                placeholder="пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"
                 name="password2"
                 onChange = {handleChange}
               />
@@ -77,17 +74,17 @@ const Auth = () => {
           )}
           <div className="mt-3 text-center">
             <p>
-              {isLogin ? "Нет аккаунта?" : "Уже есть аккаунт"} ? {" "}
+              {isLogin ? "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ?" : "пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ"} ? {" "}
               <Button
                 size="sm"
                 variant="outline-primary"
                 onClick={handleToggle}
               >
-                {isLogin ? "Зарегистрироваться" : "Войти"}
+                {isLogin ? "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ" : "пїЅпїЅпїЅпїЅпїЅ"}
               </Button>
             </p>
             <Button className="btn btn-block">
-              Sign {isLogin ? "Войти" : "Зарегистрироваться"}
+              Sign {isLogin ? "пїЅпїЅпїЅпїЅпїЅ" : "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"}
             </Button>
           </div>
         </Card>
