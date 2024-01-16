@@ -1,113 +1,67 @@
-import React, { useState } from "react";
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  useLoginMutation,
-  useRegisterMutation,
-} from "../../../entities/session/api";
+import React from "react";
+import { Button, Form } from "react-bootstrap";
+import { Link, Navigate } from "react-router-dom";
+import { capitalize } from "../../../shared/lib";
+import { useLoginMutation } from "../../../entities/session/api";
+import { Header } from "../../../widgets/header";
 
-const Auth = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    name: "",
-    password: "",
-    password2: "",
-  });
+export const Auth = () => {
+  const [login, { isLoading, data, error }] = useLoginMutation();
 
-  const [isLogin, setIsLogin] = useState(true);
-  const handleToggle = () => {
-    setIsLogin((prev) => !prev);
-  };
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get("email") as string;
+    const passwd = formData.get("passwd") as string;
 
-  const [login] = useLoginMutation();
-  const [register] = useRegisterMutation();
-  const history = useNavigate();
-
-  const [error, setError] = useState("");
-
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmit = () => {
-    isLogin
-      ? login({ email: formData.email, passwd: formData.password })
-      : register({
-          email: formData.email,
-          name: formData.name,
-          passwd: formData.password,
-        });
+    login({ login: email, password: passwd });
   };
 
   return (
-    <Row className="justify-content-center">
-      <Col xs={10} md={4}>
-        <Card className="my-5 px-5 py-3">
-          <h1 className="m-3 text-center">Sign {isLogin ? "In" : "Up"}</h1>
-          {!isLogin && (
-            <Form.Group className="my-2">
-              <Form.Label>Имя</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Имя"
-                name="name"
-                onChange={handleChange}
-              />
-            </Form.Group>
-          )}
-          <Form.Group className="my-2">
-            <Form.Label>Email адрес</Form.Label>
+    <>
+      <Header />
+      <div
+        className="d-flex flex-column justify-content-center align-items-center"
+        style={{ height: "100vh" }}
+      >
+        <h1>РђРІС‚РѕСЂРёР·Р°С†РёСЏ</h1>
+        <Form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>РџРѕС‡С‚Р°</Form.Label>
             <Form.Control
-              type="email"
-              placeholder="email"
               name="email"
-              onChange={handleChange}
+              type="email"
+              placeholder="example@mail.ru"
+              required
             />
           </Form.Group>
 
-          <Form.Group className="my-2">
-            <Form.Label>Пароль</Form.Label>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>РџР°СЂРѕР»СЊ</Form.Label>
             <Form.Control
+              name="passwd"
               type="password"
-              placeholder="password"
-              name="password"
-              onChange={handleChange}
+              placeholder="*****"
+              required
             />
           </Form.Group>
-          {!isLogin && (
-            <Form.Group className="my-2">
-              <Form.Label>Подтвердите пароль</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="введите пароль повторно"
-                name="password2"
-                onChange={handleChange}
-              />
-            </Form.Group>
-          )}
-          <div className="mt-3 text-center">
-            <p>
-              {isLogin ? "Нет аккаунта?" : "Уже есть аккаунт"} ?{" "}
-              <Button
-                size="sm"
-                variant="outline-primary"
-                onClick={handleToggle}
-              >
-                {isLogin ? "Зарегистрироваться" : "Войти"}
-              </Button>
-            </p>
-            <Button className="btn btn-block" onClick={handleSubmit}>
-              Sign {isLogin ? "Войти" : "Зарегистрироваться"}
-            </Button>
-          </div>
-        </Card>
-      </Col>
-    </Row>
+
+          <p className="text-danger">
+            {error && "data" in error && capitalize(error.data as string)}
+          </p>
+
+          <Button variant="primary" type="submit">
+            Р’РѕР№С‚Рё
+            {isLoading && "..."}
+          </Button>
+
+          <Link className="text-center" to="/tasks_front/registration">
+            Р•С‰Рµ РЅРµС‚ Р°РєРєР°СѓРЅС‚Р°? Р—Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°С‚СЊСЃСЏ
+          </Link>
+
+          {data && <Navigate to="/tasks_front/" replace={true} />}
+        </Form>
+      </div>
+    </>
   );
 };
-
-export default Auth;

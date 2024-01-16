@@ -1,12 +1,13 @@
 import { axiosBaseApi, SESSION_TAG } from "../../../shared/api";
-import { normalizeSession } from "../lib/index";
-import { RequestLoginBody, RequestRegisterBody, SessionDto, Session } from "./types";
+import { normalizeSession } from "../lib/normalizeSession";
+import { RequestLoginBody, RequestRegisterBody, SessionDto } from "./types";
+import { Session } from "../model";
 
 export const sessionApi = axiosBaseApi.injectEndpoints({
   endpoints: (build) => ({
     login: build.mutation<Session, RequestLoginBody>({
       query: (body) => ({
-        url: `/login`,
+        url: `/auth/login`,
         method: "POST",
         data: body,
       }),
@@ -15,14 +16,14 @@ export const sessionApi = axiosBaseApi.injectEndpoints({
     }),
     logout: build.mutation<void, void>({
       query: () => ({
-        url: `/logout`,
+        url: `/auth/logout`,
         method: "POST",
       }),
       invalidatesTags: [SESSION_TAG],
     }),
     register: build.mutation<Session, RequestRegisterBody>({
       query: (body) => ({
-        url: `/registration`,
+        url: `/auth/register`,
         method: "POST",
         data: body,
       }),

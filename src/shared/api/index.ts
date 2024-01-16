@@ -1,4 +1,4 @@
 export * from "./axiosBaseApi";
-export * from "./AxiosBaseQuery";
+export * from "./axiosBaseQuery";
 export * from "./tags";
 export * from "./types";

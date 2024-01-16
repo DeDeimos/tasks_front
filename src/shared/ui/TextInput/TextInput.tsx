@@ -16,7 +16,7 @@ export const TextInput: React.FC<TextInputProps> = ({
     <div className={styles.textInput}>
       <input
         type="text"
-        className={styles.textInputField}
+        className="form-control"
         placeholder={placeholder}
         value={value}
         onChange={onChange}

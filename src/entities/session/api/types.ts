@@ -1,13 +1,16 @@
+import { Role } from "../model";
+
 export type SessionDto = {
   access_token: string;
   expires_in: number;
   token_type: string;
-  role: string;
+  role: Role;
+  name: string;
 };
 
 export type RequestLoginBody = {
-  email: string;
-  passwd: string;
+  login: string;
+  password: string;
 };
 
 export type RequestRegisterBody = {
@@ -15,15 +18,3 @@ export type RequestRegisterBody = {
   name: string;
   passwd: string;
 };
-
-export type Session =
-  | {
-      accessToken: string;
-      isAuthorized: true;
-      role: string;
-    }
-  | {
-      isAuthorized: false;
-      accessToken?: string;
-      role?: string;
-    };
