@@ -37,7 +37,7 @@ export const TaskPage: React.FC = () => {
         <div style={{display: "flex", flexDirection: "column"}}>
           <h3>{task.subject}</h3>
           {task.description}
-          <Button>Добавить в список занятий</Button>
+          {/* <Button>Добавить в список занятий</Button> */}
         </div>
       </div>
     </>
