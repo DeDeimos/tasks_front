@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Header } from "../../../widgets/header";
 import { TaskRequest } from "../../../entities/task/model";
 import { useCreateTaskMutation } from "../../../entities/task/api";
+import { useNavigate } from "react-router-dom";
 
 export const TaskCreatePage: React.FC = () => {
   const [task, setTask] = useState<TaskRequest | null>(null);
-
-  const [createTask] = useCreateTaskMutation();
+  const navigate = useNavigate();
+  const [createTask, {isSuccess: isCreated}] = useCreateTaskMutation();
 
   const handleChange = (event: any) => {
     const {name, value} = event.target;
@@ -21,6 +22,10 @@ export const TaskCreatePage: React.FC = () => {
     console.log(task);
     createTask(task!);
   };
+
+  if(isCreated) {
+    navigate("/tasks_front/tasks");
+  }
 
   return (
     <>

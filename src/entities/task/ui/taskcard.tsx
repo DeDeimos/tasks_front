@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { Task } from "../model";
-import { useNavigate } from "react-router-dom";
 import Photo from "../../../assets/no-folder.png";
-import { Button } from "react-bootstrap";
-import { useDraftRequestId } from "../../request/model";
-import { useDeleteTaskFromRequestMutation } from "../api";
 
 export type TaskCardProps = {
     task: Task;
@@ -13,13 +9,9 @@ export type TaskCardProps = {
 
 export const TaskCard: React.FC<TaskCardProps> = ({ task, id }) => {
     const [imageError, setImageError] = useState(false);
-    const navigate = useNavigate();
     const handleImageError = () => {
         setImageError(true);
     };
-
-    const draftRequestId = useDraftRequestId();
-    const [handleDeleteService] = useDeleteTaskFromRequestMutation();
 
     return(
         <div className="card mb-3" key={task.id}>
@@ -40,18 +32,6 @@ export const TaskCard: React.FC<TaskCardProps> = ({ task, id }) => {
                 <div className="card-text">
                   <p>{task.name}</p>
                   <p>{task.description}</p>
-                  {id == draftRequestId && (
-                    <Button
-                      onClick={() =>
-                        handleDeleteService({
-                          id_c: String(task.id),
-                          id_r: draftRequestId,
-                        })
-                      }
-                    >
-                      Удалить
-                    </Button>
-                  )}
                 </div>
               </div>
             </div>

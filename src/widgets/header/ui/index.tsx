@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
       )}
       {isAuth && role == "admin" && (
         <Link to="/tasks_front/tasks">
-          <div className="col-md-3 mb-2 mb-md-0 px-3">Задачи</div>
+          <div className="col-md-3 mb-2 mb-md-0 px-3">Задания</div>
         </Link>
       )}
 

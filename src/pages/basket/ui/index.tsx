@@ -89,11 +89,11 @@ export const BasketPage: React.FC = () => {
   }
 
   if (isSuccessComplete) {
-    navigate("/tasks_front/");
+    navigate("/tasks_front/requests");
   }
 
   if (isSuccessDeny) {
-    navigate("/tasks_front/");
+    navigate("/tasks_front/requests");
   }
 
 
@@ -119,7 +119,7 @@ export const BasketPage: React.FC = () => {
       <Breadcrumb
         items={[
           { text: "Заявки", href: "/tasks_front/requests" },
-          { text: "Корзина", active: true },
+          { text: `${rus(basket.status)}`, active: true },
         ]}
       />
       <div className="text-center">

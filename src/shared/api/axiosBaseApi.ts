@@ -11,9 +11,7 @@ export const axiosBaseApi = createApi({
   endpoints: () => ({}),
   baseQuery: axiosBaseQuery({
     baseUrl: "http://185.204.2.233:8079",
-  
   }),
-  keepUnusedDataFor: 0,
   reducerPath: "api",
   tagTypes: [
     BASKET_TAG,

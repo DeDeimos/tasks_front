@@ -8,9 +8,9 @@ function formatAndAddTime(originalString: string, additionalDate: string = "23:5
   const originalDate = new Date(originalString);
 
   // Форматируем новую строку с нужным порядком даты и добавляем время
-  const formattedDate = `${originalDate.getFullYear()}-${(originalDate.getDate() < 10 ? '0' : '') + originalDate.getDate()}-${(originalDate.getMonth() + 1 < 10 ? '0' : '') + (originalDate.getMonth() + 1)}`;
+  const formattedDate = `${originalDate.getFullYear()}-${(originalDate.getMonth() + 1 < 10 ? '0' : '') + (originalDate.getMonth() + 1)}-${(originalDate.getDate() < 10 ? '0' : '') + originalDate.getDate()}`;
   const newString = `${formattedDate } ${additionalDate}`
-
+  console.log(newString);
   return newString;
 }
 

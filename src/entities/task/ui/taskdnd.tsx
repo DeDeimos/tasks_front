@@ -3,7 +3,10 @@ import { Task } from "../../../entities/task/model";
 import Photo from "../../../assets/no-folder.png";
 import { Button } from "react-bootstrap";
 import { useDraftRequestId } from "../../request/model";
-import { useDeleteTaskFromRequestMutation, useChangeTaskOrderInRequestMutation } from "../../../entities/task/api";
+import {
+  useDeleteTaskFromRequestMutation,
+  useChangeTaskOrderInRequestMutation,
+} from "../../../entities/task/api";
 import { useDrag, useDrop } from "react-dnd";
 import { ItemTypes } from "./ItemTypes";
 
@@ -24,6 +27,8 @@ export const TaskDnD: React.FC<TaskCardProps> = ({
   const handleImageError = () => {
     setImageError(true);
   };
+
+  const [deleted, setDeleted] = useState(false);
 
   const draftRequestId = useDraftRequestId();
   const [changeOrder] = useChangeTaskOrderInRequestMutation();
@@ -81,7 +86,7 @@ export const TaskDnD: React.FC<TaskCardProps> = ({
     <div
       ref={ref}
       data-handler-id={handlerId}
-      className="card mb-3"
+      className={"card mb-3" + (deleted ? " d-none" : "")}
       key={task.id}
     >
       <div className="row g-0">
@@ -103,12 +108,13 @@ export const TaskDnD: React.FC<TaskCardProps> = ({
               <p>{task.description}</p>
               {id == draftRequestId && (
                 <Button
-                  onClick={() =>
+                  onClick={() => {
                     handleDeleteService({
                       id_c: String(task.id),
                       id_r: draftRequestId,
-                    })
-                  }
+                    });
+                    setDeleted(true);
+                  }}
                 >
                   Удалить
                 </Button>

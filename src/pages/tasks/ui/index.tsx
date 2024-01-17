@@ -29,15 +29,15 @@ export const TasksPage: React.FC = () => {
   return (
     <div>
       <Header />
-      <TaskSearch onSearch={onSearch} defaultQuery={query} />
-      <h1 className="text-center">Задачи</h1>
+      {/* <TaskSearch onSearch={onSearch} defaultQuery={query} /> */}
+      <h1 className="text-center">Задания</h1>
       <div className="mb-3-container text-center">
         <Button
           onClick={() => navigate("/tasks_front/tasks/create")}
           variant="primary"
           className="mb-3"
         >
-          Создать задачу
+          Создать задание
         </Button>
         <table className="table" style={{ padding: "10px", margin: "10px" }}>
           <thead

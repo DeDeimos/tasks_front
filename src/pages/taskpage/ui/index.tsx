@@ -7,7 +7,7 @@ import Photo from "../../../assets/no-folder.png";
 // import { fetcTask } from "../../../entities/task/api";
 import Breadcrumb from "../../../shared/ui/BreadCrumb";
 import {
-  useAddTaskToRequestMutation,
+  useGetTasksQuery,
   useGetTaskQuery,
 } from "../../../entities/task/api";
 import { useIsAuth } from "../../../entities/session/model";
@@ -15,7 +15,7 @@ import { useIsAuth } from "../../../entities/session/model";
 export const TaskPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { data: task, isLoading } = useGetTaskQuery(id!);
-  const [addToBasket] = useAddTaskToRequestMutation();
+  const {data: tasks} = useGetTasksQuery('');
   const [imageError, setImageError] = useState(false);
   const isAuth = useIsAuth();
 
