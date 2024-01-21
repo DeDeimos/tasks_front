@@ -13,7 +13,7 @@ export const taskApi = axiosBaseApi.injectEndpoints({
   endpoints: (build) => ({
     getTasks: build.query<TaskList, string>({
       query: (title) => ({
-        url: `/tasks`,
+        url: `/tasks/`,
         method: "GET",
         params: { title },
       }),

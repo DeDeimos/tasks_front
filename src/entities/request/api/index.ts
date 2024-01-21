@@ -18,7 +18,7 @@ export const requestApi = axiosBaseApi.injectEndpoints({
   endpoints: (build) => ({
     getRequests: build.query<Request[], QueryParams>({
       query: ({ date_from, date_to, status }) => ({
-        url: `/requests`,
+        url: `/requests/`,
         method: "GET",
         params: {
           startDate: date_from ? formatAndAddTime(date_from, "00:00:00") : undefined,
