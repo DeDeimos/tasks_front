@@ -39,7 +39,7 @@ button {
   font-weight: inherit;
   line-height: inherit;
   color: black;
-  background-color: #1e1e1e;
+  background-color: #ffffff;
   border: 1px solid #1e1e1e;
   border-radius: 0.25rem;
   padding: 0.5rem 1rem;
@@ -53,6 +53,26 @@ button:hover {
   color: #ffffff;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #ffffff;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #646cff;
+  }
+  button {
+    background-color: #1e1e1e;
+    color: #ffffff;
+  }
+
+  button:hover {
+    background-color: #ffffff;
+    border-color: #2e2e2e;
+    color: #1e1e1e;
+  }
+
+}
 
 
 @media (prefers-color-scheme: light) {
