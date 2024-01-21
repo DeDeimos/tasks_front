@@ -29,7 +29,11 @@ export const Task: React.FC<CardProps> = ({ task }) => {
         <Card.Title>{task.subject}</Card.Title>
         <Card.Text>{task.minidescription}</Card.Text>
         <Link to={`/tasks_front/task/${task.id}`}>
-          <Button variant="success">Посмотреть</Button>
+          {/* <Button variant="success">Посмотреть</Button> */}
+          <button 
+          className="button"
+          // style={{backgroundColor: "##eff0f5", color: "black", border: "1px solid", padding: "12px 20px", borderRadius: "12px", cursor: "pointer", borderColor: "#eff0f5", fontSize: "16px", transform: "translateY(-10px)", outline: "none"}}
+          >Посмотреть</button>
         </Link>
       </Card.Body>
     </Card>
