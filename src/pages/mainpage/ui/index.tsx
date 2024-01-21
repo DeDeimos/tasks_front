@@ -25,42 +25,6 @@ export const HomePage: React.FC = () => {
         setTasks(tasks);
         console.log(tasks);
       })
-      .catch(() => {
-        setTasks([
-          {
-            id: "1",
-            name: "Создание сайта",
-            subject: "Информатика",
-            minidescription: "Создать сайт",
-            description: "Создать сайт",
-            image: "https://i.imgur.com/2qXZ6S.png",
-          },
-          {
-            id: "2",
-            name: "Написать сочинение",
-            subject: "Русский язык",
-            minidescription: "Написать сочинение",
-            description: "Написать сочинение",
-            image: "https://i.imgur.com/2XsZ6S.png",
-          },
-          {
-            id: "3",
-            name: "Нарисовать картину",
-            subject: "ИЗО",
-            minidescription: "Нарисовать картину",
-            description: "Нарисовать картину",
-            image: "https://i.imgur.com/2qXsZS.png",
-          },
-          {
-            id: "4",
-            name: "Решить задачу",
-            subject: "Математика",
-            minidescription: "Решить задачу",
-            description: "Решить задачу",
-            image: "https://i.imgur.com/2qXs6S.png",
-          }
-        ]);
-      });
   }, [searchParams]);
 
   return (
