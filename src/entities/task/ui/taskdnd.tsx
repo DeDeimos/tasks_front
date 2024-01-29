@@ -107,17 +107,26 @@ export const TaskDnD: React.FC<TaskCardProps> = ({
               <p>{task.name}</p>
               <p>{task.description}</p>
               {id == draftRequestId && (
-                <Button
-                  onClick={() => {
-                    handleDeleteService({
-                      id_c: String(task.id),
-                      id_r: draftRequestId,
-                    });
-                    setDeleted(true);
-                  }}
-                >
+                // <Button
+                //   onClick={() => {
+                //     handleDeleteService({
+                //       id_c: String(task.id),
+                //       id_r: draftRequestId,
+                //     });
+                //     setDeleted(true);
+                //   }}
+                // >
+                //   Удалить
+                // </Button>
+                <button className="button" onClick={() => {
+                  handleDeleteService({
+                    id_c: String(task.id),
+                    id_r: draftRequestId,
+                  });
+                  setDeleted(true);
+                }}>
                   Удалить
-                </Button>
+                </button>
               )}
             </div>
           </div>

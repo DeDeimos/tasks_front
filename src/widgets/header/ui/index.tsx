@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
       </Link>
       {isAuth && (
         <Link to="/tasks_front/requests">
-          <div className="col-md-3 mb-2 mb-md-0 px-3">Заявки</div>
+          <div className="col-md-3 mb-2 mb-md-0 px-3">Занятия</div>
         </Link>
       )}
       {isAuth && role == "admin" && (
@@ -45,12 +45,14 @@ export const Header: React.FC = () => {
         ) : (
           <>
             <Link to="/tasks_front/login">
-              <button type="button" className="btn btn-outline-primary me-2">
+              <button 
+              style={{marginRight: "10px"}}
+              className="button">
                 Войти
               </button>
             </Link>
             <Link to="/tasks_front/registration">
-              <button type="button" className="btn btn-primary">
+              <button className="button">
                 Зарегистрироваться
               </button>
             </Link>

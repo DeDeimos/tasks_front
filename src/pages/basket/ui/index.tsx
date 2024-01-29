@@ -165,26 +165,29 @@ export const BasketPage: React.FC = () => {
       ))} */}
 
       {id == draftRequestId && (
-        <Button 
+        <button
+        className="button" 
+        style={{marginRight: "10px"}}
         onClick={handleSubmit}
-        variant="success"
-        >Создать заявку</Button>
+        >Создать заявку</button>
       )}
       {id == draftRequestId && (
-        <Button 
+        <button 
         onClick={handleDelete}
-        variant="danger" 
-        >Удалить заявку</Button>
+        className="button"
+        >Удалить заявку</button>
       )}
       {role == "admin" && basket.status == "on_check" && (
-        <Button variant="success" onClick={handleComplete}>
+        <button 
+        style={{marginRight: "10px"}}
+        className="button" onClick={handleComplete}>
           Подтвердить
-        </Button>
+        </button>
       )}
       {role == "admin" && basket.status == "on_check" && (
-        <Button variant="danger" onClick={handleDeny}>
+        <button className="button" onClick={handleDeny}>
           Отклонить
-        </Button>
+        </button>
       )}
     </div>
   );

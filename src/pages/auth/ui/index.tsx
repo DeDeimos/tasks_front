@@ -50,10 +50,12 @@ export const Auth = () => {
             {error && "data" in error && capitalize(error.data as string)}
           </p>
 
-          <Button variant="primary" type="submit">
+          <button 
+          className="button"
+          type="submit">
             Войти
             {isLoading && "..."}
-          </Button>
+          </button>
 
           <Link className="text-center" to="/tasks_front/registration">
             Еще нет аккаунта? Зарегистрироваться

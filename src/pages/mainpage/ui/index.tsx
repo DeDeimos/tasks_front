@@ -55,14 +55,22 @@ export const HomePage: React.FC = () => {
         />
         <div className="container">
         {isAuth && (
-          <Button 
-          className={"btn btn-primary" + (draftRequestId != "null" ? "" : " disabled")} 
-          onClick={() => navigate(`/tasks_front/requests/${draftRequestId}`)}
+          // <Button 
+          // className={"btn btn-primary" + (draftRequestId != "null" ? "" : " disabled")} 
+          // onClick={() => navigate(`/tasks_front/requests/${draftRequestId}`)}
           
+          // >
+          //   Корзина
+          // </Button>
+          <button
+          className={"button" + (draftRequestId != "null" ? "" : " disabled cursor-not-allowed gray")}
+          disabled={draftRequestId == "null"}
+          style={draftRequestId != "null" ? {cursor: "pointer"} : {cursor: "not-allowed", color: "gray"}}
+          onClick={() => navigate(`/tasks_front/requests/${draftRequestId}`)}
           >
             Корзина
-          </Button>
-        )}
+          </button>
+          )}
         </div>
       <div className="album py-5 bg-body-tertiary">
         <div className="container">

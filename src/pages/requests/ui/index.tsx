@@ -159,7 +159,7 @@ export const RequestsPage: React.FC = () => {
         )}
       </div>
 
-      <h1>Заявки</h1>
+      <h1>Занятия</h1>
       <div className="mb-3 container">
         <table className="table" style={{ padding: "10px", margin: "10px" }}>
           <thead style={{ padding: "10px" }}>
@@ -213,15 +213,15 @@ export const RequestsPage: React.FC = () => {
                 {role === "admin" ? (
                   <td style={{ padding: "10px" }}>
                     {request.status == "on_check" ? (
-                      <Button
-                        variant="success"
+                      <button
+                        className="button" 
                         onClick={(e) => {
                           e.stopPropagation();
                           handleComplete(request.id);
                         }}
                       >
                         Подтвердить
-                      </Button>
+                      </button>
                     ) : (
                       "---"
                     )}
@@ -232,15 +232,15 @@ export const RequestsPage: React.FC = () => {
                 {role === "admin" ? (
                   <td style={{ padding: "10px" }}>
                     {request.status == "on_check" ? (
-                      <Button
-                        variant="danger"
-                        onClick={(e) => {
+                      <button
+                      className="button"
+                      onClick={(e) => {
                           e.stopPropagation();
                           handleDeny(request.id);
                         }}
                       >
                         Отклонить
-                      </Button>
+                      </button>
                     ) : (
                       "---"
                     )}

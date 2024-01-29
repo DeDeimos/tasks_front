@@ -88,7 +88,7 @@ export const TaskCreatePage: React.FC = () => {
               onChange={handleChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="button">
             Сохранить
           </button>
         </form>

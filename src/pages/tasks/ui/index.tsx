@@ -32,13 +32,13 @@ export const TasksPage: React.FC = () => {
       {/* <TaskSearch onSearch={onSearch} defaultQuery={query} /> */}
       <h1 className="text-center">Задания</h1>
       <div className="mb-3-container text-center">
-        <Button
+        <button
           onClick={() => navigate("/tasks_front/tasks/create")}
-          variant="primary"
-          className="mb-3"
+          
+          className="button"
         >
           Создать задание
-        </Button>
+        </button>
         <table className="table" style={{ padding: "10px", margin: "10px" }}>
           <thead
           style={{ padding: "10px" }}
@@ -62,16 +62,18 @@ export const TasksPage: React.FC = () => {
                 <td>{task.miniDescription}</td>
                 <td>{task.description}</td>
                 <td>
-                  <Button
+                  <button
+                    className="button"
                     onClick={() => navigate(`/tasks_front/tasks/${task.id}`)}
                   >
                     Редактировать
-                  </Button>
+                  </button>
                 </td>
                 <td>
-                  <Button variant="danger" onClick={() => deleteTask(task.id)}>
+                  <button 
+                  className="button" onClick={() => deleteTask(task.id)}>
                     Удалить
-                  </Button>
+                  </button>
                 </td>
               </tr>
             ))}

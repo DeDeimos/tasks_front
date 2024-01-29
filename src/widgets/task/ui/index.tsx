@@ -42,17 +42,29 @@ export const Task: React.FC<CardProps> = ({ task, isAdded }) => {
           >Посмотреть</Button> */}
         </Link>
           {isAuth &&
-            <Button
-            variant={add ? "secondary" : "success"}
-            className={add ? "disabled cursor-not-allowed" : ""}
+          //   <Button
+          //   variant={add ? "secondary" : "success"}
+          //   className={add ? "disabled cursor-not-allowed" : ""}
+          //   onClick={(e) => {
+          //     e.stopPropagation();
+          //     addToBasket(task.id)
+          //     setAdd(true);
+          //   }}
+          // >
+          //   {add ? "Добавлено" : "Добавить"}
+          // </Button>}
+            <button 
+            className="button"
+            disabled={add}
             onClick={(e) => {
               e.stopPropagation();
               addToBasket(task.id)
               setAdd(true);
             }}
-          >
-            {add ? "Добавлено" : "Добавить"}
-          </Button>}
+            >
+              {add ? "Добавлено" : "Добавить"}
+            </button>
+}
         </Card.Body>
     </Card>
   );

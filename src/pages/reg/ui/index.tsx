@@ -98,10 +98,12 @@ export const Reg = () => {
           <p className="text-danger">
             {errorData}
           </p>
-          <Button variant="primary" type="submit">
+          <button 
+          className="button"
+          type="submit">
             Зарегистрироваться
             {isLoading && "..."}
-          </Button>
+          </button>
 
           <Link className="text-center" to="/tasks_front/login">
             Есть аккаунт? Войдите
